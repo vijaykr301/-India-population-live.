@@ -3,134 +3,87 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#050b17">
-<title>EarthPulse Live — World & India Counters</title>
-<meta name="description" content="Vertical live-stream style dashboard with rotating Earth, animated Indian flag, population, births and deaths estimates.">
+<meta name="theme-color" content="#030712">
+<title>EarthPulse Live</title>
 <style>
-:root{--bg:#050b17;--panel:#101b2e;--line:#243b58;--text:#f4f8ff;--muted:#a3b3c9;--cyan:#63e7ed;--orange:#ff9933;--green:#138808}
+:root{--bg:#030712;--panel:#0b1830;--text:#f5f8ff;--muted:#91a7c5;--cyan:#66efff;--saffron:#ff9933;--green:#70f0a1}
 *{box-sizing:border-box}
-html,body{margin:0;min-height:100%;background:#050b17;color:var(--text);font-family:system-ui,-apple-system,"Segoe UI",sans-serif}
+html,body{margin:0;min-height:100%;background:var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif}
 body{display:flex;justify-content:center}
-.phone{width:100%;max-width:520px;min-height:100dvh;overflow:hidden;position:relative;padding:16px 15px 24px;background:radial-gradient(ellipse at 50% 13%,#14385a 0%,#09172b 35%,#050b17 72%);isolation:isolate}
-.stars,.stars:before,.stars:after{position:absolute;inset:0;pointer-events:none;z-index:-1;background-image:radial-gradient(1px 1px at 20% 15%,#fff 90%,transparent),radial-gradient(1px 1px at 75% 8%,#8adfff 90%,transparent),radial-gradient(1px 1px at 82% 34%,#fff 90%,transparent),radial-gradient(1px 1px at 12% 43%,#fff 90%,transparent),radial-gradient(1px 1px at 92% 61%,#9de9ff 90%,transparent),radial-gradient(1px 1px at 28% 72%,#fff 90%,transparent);opacity:.5}
-.topbar{display:flex;justify-content:space-between;align-items:center;gap:8px;position:relative;z-index:2}
-.brand{display:flex;align-items:center;gap:8px;font-weight:850;font-size:15px;letter-spacing:.02em}.brand-icon{width:32px;height:32px;border-radius:10px;background:linear-gradient(135deg,#5de4e8,#4c84ff);display:grid;place-items:center;color:#06111e;font-size:21px}
-.live{display:flex;align-items:center;gap:6px;border:1px solid #713d4c;background:#341d2c;color:#ffb3bb;padding:5px 9px;border-radius:30px;font-size:10px;font-weight:900;letter-spacing:.1em}.live-dot{height:7px;width:7px;border-radius:50%;background:#ff5366;box-shadow:0 0 10px #ff5366;animation:blink 1s steps(2,start) infinite}
+.app{width:100%;max-width:520px;min-height:100dvh;overflow:hidden;position:relative;padding:16px 15px 22px;background:radial-gradient(ellipse at 50% 27%,#0e3154 0%,#07152a 34%,#030712 72%);isolation:isolate}
+.stars{position:absolute;inset:0;z-index:-1;pointer-events:none;opacity:.55;background-image:radial-gradient(1px 1px at 12% 12%,#fff 90%,transparent),radial-gradient(1px 1px at 79% 8%,#a8f5ff 90%,transparent),radial-gradient(1px 1px at 87% 26%,#fff 90%,transparent),radial-gradient(1px 1px at 7% 41%,#fff 90%,transparent),radial-gradient(1px 1px at 92% 52%,#b9f6ff 90%,transparent),radial-gradient(1px 1px at 24% 73%,#fff 90%,transparent),radial-gradient(1px 1px at 66% 67%,#fff 90%,transparent)}
+header{display:flex;justify-content:space-between;align-items:center;gap:8px;position:relative;z-index:3}.brand{display:flex;align-items:center;gap:9px;font-size:14px;font-weight:900;letter-spacing:.08em}.brand-mark{width:33px;height:33px;border-radius:11px;background:linear-gradient(135deg,#62f0f1,#4a7fff);display:grid;place-items:center;color:#041021;font-size:22px;box-shadow:0 0 24px #4ddaf544}.live{display:flex;align-items:center;gap:6px;border:1px solid #74374b;background:#301522;color:#ffb5c1;padding:5px 9px;border-radius:30px;font-size:10px;font-weight:900;letter-spacing:.12em}.live i{width:7px;height:7px;border-radius:50%;background:#ff4966;box-shadow:0 0 10px #ff4966;animation:blink 1s steps(2,start) infinite}
 @keyframes blink{to{opacity:.25}}
-.headline{text-align:center;margin:19px 0 0}.eyebrow{font-size:10px;font-weight:850;letter-spacing:.2em;color:#81ecf1;text-transform:uppercase}.headline h1{font-size:clamp(23px,6.4vw,32px);line-height:1.12;letter-spacing:-.04em;margin:7px 0 5px}.headline p{margin:0;color:var(--muted);font-size:11px}
-.scene{height:clamp(195px,55vw,265px);max-height:265px;position:relative;display:flex;align-items:center;justify-content:center;margin:1px auto 2px}
-.orbit{position:absolute;width:min(78vw,320px);height:min(78vw,320px);max-height:310px;max-width:310px;border:1px solid #3a86b566;border-radius:50%;transform:rotate(-20deg);box-shadow:0 0 30px #1b86bd16,inset 0 0 25px #5de4e80a}
-.orbit:before,.orbit:after{content:"";position:absolute;border:1px solid #5de4e833;border-radius:50%;inset:13px 43px;transform:rotate(42deg)}.orbit:after{inset:36px 12px;transform:rotate(-38deg)}
-.earth{width:clamp(165px,46vw,218px);height:clamp(165px,46vw,218px);border-radius:50%;position:relative;overflow:hidden;background:radial-gradient(circle at 31% 24%,#75dfff 0,#2879c7 19%,#0b3c7a 52%,#061a3d 78%);box-shadow:inset -20px -12px 32px #010a1d,inset 10px 5px 20px #75e5ff88,0 0 30px #2d9ff055,0 0 65px #2d9ff022;animation:float 5s ease-in-out infinite}
-.earth:before{content:"";position:absolute;inset:-5%;border-radius:50%;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 360 180'%3E%3Cg fill='%237de09b' stroke='%232a9b77' stroke-width='1.5'%3E%3Cpath d='M10 28L31 15 56 18 72 31 65 46 47 49 40 66 24 58 15 44Z M68 62L91 59 104 75 95 92 84 116 75 143 62 121 58 93Z M105 24L133 16 157 25 168 42 151 53 134 45 120 57 108 44Z M147 67L174 55 202 67 214 88 199 111 190 139 173 153 159 126 154 101Z M187 20L215 12 238 21 249 36 233 47 214 41 203 54 190 43Z M237 67L263 55 289 65 309 83 298 101 276 96 263 114 247 96Z M301 24L327 20 345 34 337 48 315 47Z'/%3E%3C/g%3E%3C/svg%3E");background-size:200% 100%;background-repeat:repeat-x;filter:drop-shadow(0 0 3px #7de09b44);animation:continents 18s linear infinite;opacity:.95}
-.earth:after{content:"";position:absolute;inset:0;border-radius:50%;background:linear-gradient(100deg,transparent 35%,#7bdfff22 48%,#00112d99 100%);box-shadow:inset 5px 0 12px #8deaff55}
-@keyframes continents{from{background-position:0 0}to{background-position:200% 0}}
-@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
-.flag-wrap{position:absolute;right:3px;bottom:7px;width:108px;height:73px;filter:drop-shadow(0 8px 10px #0008);transform-origin:left center;animation:flagFloat 3.3s ease-in-out infinite}
-.flag-pole{position:absolute;left:5px;top:0;height:72px;width:3px;border-radius:3px;background:linear-gradient(90deg,#d5d9e2,#747e8d)}
-.flag{position:absolute;left:8px;top:5px;width:96px;height:60px;transform-origin:left center;animation:wave 1.6s ease-in-out infinite alternate;filter:drop-shadow(1px 2px 2px #0005);background:linear-gradient(to bottom,#ff9933 0 33.33%,#fff 33.33% 66.66%,#138808 66.66% 100%);clip-path:polygon(0 0,100% 4%,100% 96%,0 100%);overflow:hidden}
-.flag:after{content:"";position:absolute;left:50%;top:50%;width:14px;height:14px;border:1.6px solid #2456a5;border-radius:50%;transform:translate(-50%,-50%);background:repeating-conic-gradient(#2456a5 0deg 5deg,transparent 5deg 15deg)}
-@keyframes wave{0%{transform:perspective(180px) rotateY(-15deg) skewY(1deg);filter:brightness(.93)}100%{transform:perspective(180px) rotateY(14deg) skewY(-2deg);filter:brightness(1.08)}}
-@keyframes flagFloat{0%,100%{translate:0 0}50%{translate:0 -4px}}
-.ist{text-align:center;color:#a9c0d8;font-size:10px;margin-top:-2px}.ist strong{color:#fff;font-variant-numeric:tabular-nums}
-.counters{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:15px}
-.counter{position:relative;min-width:0;padding:14px 12px 13px;background:linear-gradient(150deg,#132a42ed,#0d192bed);border:1px solid #34506b;border-radius:16px;box-shadow:0 8px 25px #0002}
-.counter:before{content:"";position:absolute;top:0;left:14px;right:14px;height:2px;background:var(--accent,#61dfe8);border-radius:0 0 4px 4px;box-shadow:0 0 12px var(--accent,#61dfe8)}
-.label{display:flex;align-items:center;gap:6px;font-size:11px;font-weight:750;color:#d9e8f7;min-height:30px}.label .emoji{font-size:19px}.number{font-size:clamp(19px,5.3vw,27px);font-weight:900;letter-spacing:-.04em;line-height:1.2;margin:12px 0 7px;overflow-wrap:anywhere;font-variant-numeric:tabular-nums}.caption{font-size:9px;line-height:1.35;color:#9fb3c9}.pulse{display:inline-block;width:5px;height:5px;border-radius:50%;background:#67e39a;margin-right:4px;vertical-align:middle}
-.lower{text-align:center;margin:16px 0 0}.lower .mini-title{font-size:10px;letter-spacing:.14em;color:#83e9ee;font-weight:800}.lower p{font-size:9px;color:#8fa5bc;margin:5px auto 0;max-width:340px}
-.bottom{display:flex;justify-content:space-between;align-items:center;gap:10px;border-top:1px solid #263c55;margin-top:17px;padding-top:10px;color:#7188a2;font-size:9px}.bottom a{color:#91dce8;text-decoration:none}
-@media(min-width:430px){.phone{padding-left:20px;padding-right:20px}.counters{gap:12px}.counter{padding:16px 15px}}
-@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important}}
+.hero{text-align:center;margin-top:19px}.eyebrow{font-size:10px;letter-spacing:.2em;color:#83f5f4;font-weight:900}.hero h1{font-size:clamp(25px,7vw,34px);line-height:1.05;letter-spacing:-.045em;margin:9px 0 6px}.hero p{margin:0;color:#a6bdd6;font-size:11px}
+.universe{height:clamp(270px,76vw,355px);max-height:355px;position:relative;margin:0 auto;display:flex;align-items:center;justify-content:center;perspective:900px}
+.halo{position:absolute;width:min(83vw,340px);height:min(83vw,340px);max-width:340px;max-height:340px;border-radius:50%;border:1px solid #58dff333;box-shadow:0 0 60px #1aa9ff0c,inset 0 0 50px #31c5ff0b;transform:rotateX(67deg) rotateZ(-15deg);animation:orbit 24s linear infinite}
+.halo:before,.halo:after{content:"";position:absolute;inset:14px 48px;border:1px solid #59dce62b;border-radius:50%;transform:rotate(46deg)}.halo:after{inset:39px 16px;transform:rotate(-43deg)}
+@keyframes orbit{to{transform:rotateX(67deg) rotateZ(345deg)}}
+.earth-shell{position:relative;width:clamp(190px,53vw,250px);height:clamp(190px,53vw,250px);max-width:250px;max-height:250px;border-radius:50%;overflow:hidden;background:radial-gradient(circle at 30% 25%,#9ffaff 0%,#45c6ff 9%,#1474c7 28%,#074078 57%,#03142f 78%,#010819 100%);box-shadow:inset -24px -18px 38px #000b,inset 11px 8px 23px #b7faff7d,0 0 20px #42d9ff66,0 0 55px #168bff44,0 0 100px #168bff1c;transform-style:preserve-3d;animation:earthFloat 6s ease-in-out infinite}
+.earth-shell:before{content:"";position:absolute;inset:0;border-radius:50%;z-index:2;pointer-events:none;background:linear-gradient(105deg,transparent 20%,#b6f7ff14 36%,transparent 48%,#000b 100%);box-shadow:inset 7px 0 13px #b9f7ff66,inset -17px -4px 28px #000c}
+.earth-shell:after{content:"";position:absolute;inset:-3px;border-radius:50%;border:2px solid #7deaff33;box-shadow:0 0 17px #4bdfff44}
+.continents{position:absolute;inset:0;width:200%;height:100%;background-repeat:repeat-x;background-size:50% 100%;animation:spinMap 22s linear infinite;filter:drop-shadow(0 0 2px #4de5a8);opacity:.98}
+@keyframes spinMap{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@keyframes earthFloat{0%,100%{translate:0 0}50%{translate:0 -7px}}
+.atmosphere{position:absolute;width:clamp(205px,57vw,266px);height:clamp(205px,57vw,266px);max-width:266px;max-height:266px;border-radius:50%;border:1px solid #8cf5ff66;box-shadow:0 0 18px #48dfff2c,inset 0 0 18px #48dfff22;pointer-events:none}
+.flag-holder{position:absolute;right:0;bottom:10px;width:115px;height:85px;filter:drop-shadow(0 10px 9px #0008);animation:flagHover 4s ease-in-out infinite;transform-origin:left center;z-index:4}
+.pole{position:absolute;left:5px;top:0;height:83px;width:3px;border-radius:3px;background:linear-gradient(90deg,#e9efff,#68788e)}
+.flag{position:absolute;left:8px;top:6px;width:102px;height:63px;transform-origin:left center;animation:flagWave 1.35s ease-in-out infinite alternate;clip-path:polygon(0 0,100% 5%,100% 95%,0 100%);background:linear-gradient(to bottom,#ff9933 0 33.33%,#fff 33.33% 66.66%,#138808 66.66% 100%);box-shadow:0 3px 9px #0004}
+.chakra{position:absolute;left:50%;top:50%;width:16px;height:16px;border:1.5px solid #1b4c9b;border-radius:50%;transform:translate(-50%,-50%);background:repeating-conic-gradient(#1b4c9b 0deg 4deg,transparent 4deg 15deg)}
+@keyframes flagWave{0%{transform:perspective(160px) rotateY(-20deg) skewY(2deg);filter:brightness(.92)}100%{transform:perspective(160px) rotateY(18deg) skewY(-2deg);filter:brightness(1.08)}}
+@keyframes flagHover{0%,100%{translate:0 0}50%{translate:0 -5px}}
+.clock{text-align:center;margin-top:-1px;font-size:10px;color:#8ea8c6}.clock strong{color:#f4f8ff;font-size:12px;font-variant-numeric:tabular-nums}
+.cards{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:18px}.card{min-width:0;position:relative;overflow:hidden;padding:14px 12px 13px;border:1px solid #34516e;border-radius:17px;background:linear-gradient(145deg,#132a44f5,#0a1629f5);box-shadow:0 9px 26px #0003}.card:before{content:"";position:absolute;top:0;left:13px;right:13px;height:2px;border-radius:0 0 5px 5px;background:var(--accent);box-shadow:0 0 12px var(--accent)}
+.label{display:flex;align-items:center;gap:6px;min-height:29px;font-size:11px;font-weight:800;color:#dceafa}.label span:first-child{font-size:19px}.value{font-size:clamp(19px,5.2vw,27px);line-height:1.15;font-weight:900;letter-spacing:-.045em;margin:13px 0 8px;overflow-wrap:anywhere;font-variant-numeric:tabular-nums}.sub{font-size:9px;color:#9bb0c8;line-height:1.35}.pulse{display:inline-block;width:5px;height:5px;border-radius:50%;background:#6fe6a1;margin-right:4px}
+footer{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-top:18px;color:#7790ad;font-size:9px;letter-spacing:.03em}
+@media(min-width:430px){.app{padding-left:20px;padding-right:20px}.cards{gap:12px}.card{padding:16px 15px}}
+@media(max-width:370px){.app{padding-left:11px;padding-right:11px}.cards{gap:8px}.card{padding:12px 10px}.value{font-size:19px}.flag-holder{right:-4px;transform:scale(.88);transform-origin:right bottom}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important}}
 </style>
 </head>
 <body>
-<main class="phone">
+<main class="app">
 <div class="stars"></div>
-<header class="topbar">
-  <div class="brand"><div class="brand-icon">◎</div><span>EARTHPULSE</span></div>
-  <div class="live"><span class="live-dot"></span> LIVE STYLE</div>
-</header>
-<section class="headline">
-  <div class="eyebrow">🌎 ONE PLANET · 🇮🇳 ONE NATION</div>
-  <h1>WORLD & INDIA<br>LIVE COUNTERS</h1>
-  <p>Our changing world, updated every second</p>
+<header><div class="brand"><div class="brand-mark">◎</div><span>EARTHPULSE</span></div><div class="live"><i></i> LIVE STYLE</div></header>
+<section class="hero"><div class="eyebrow">🌎 ONE PLANET &nbsp;·&nbsp; 🇮🇳 ONE NATION</div><h1>WORLD & INDIA<br>LIVE COUNTERS</h1><p>Our changing world, updated every second</p></section>
+<section class="universe" aria-label="Rotating 3D-style Earth and waving Indian flag">
+  <div class="halo"></div><div class="earth-shell"><div class="continents" aria-hidden="true"></div></div><div class="atmosphere"></div>
+  <div class="flag-holder" role="img" aria-label="Waving Indian national flag"><div class="pole"></div><div class="flag"><div class="chakra"></div></div></div>
 </section>
-<section class="scene" aria-label="Animated rotating globe and waving Indian flag">
-  <div class="orbit"></div>
-  <div class="earth" role="img" aria-label="Rotating stylized Earth globe"></div>
-  <div class="flag-wrap" role="img" aria-label="Animated Indian tricolour flag">
-    <div class="flag-pole"></div><div class="flag"></div>
-  </div>
+<div class="clock"><strong id="clock">--:--:-- IST</strong> &nbsp;·&nbsp; <span id="date">Loading…</span></div>
+<section class="cards">
+  <article class="card" style="--accent:#5de4e8"><div class="label"><span>🌎</span><span>World Population</span></div><div class="value" id="worldPop">8,200,000,000</div><div class="sub"><i class="pulse"></i>Estimated total population</div></article>
+  <article class="card" style="--accent:#ff9933"><div class="label"><span>🇮🇳</span><span>India Population</span></div><div class="value" id="indiaPop">1,456,200,000</div><div class="sub"><i class="pulse"></i>Estimated total population</div></article>
+  <article class="card" style="--accent:#70f0a1"><div class="label"><span>👶</span><span>India Births Today</span></div><div class="value" id="indiaBirths">0</div><div class="sub"><i class="pulse"></i>Since midnight IST</div></article>
+  <article class="card" style="--accent:#ff8e9b"><div class="label"><span>🕊️</span><span>India Deaths Today</span></div><div class="value" id="indiaDeaths">0</div><div class="sub"><i class="pulse"></i>Since midnight IST</div></article>
 </section>
-<div class="ist"><strong id="clock">--:--:-- IST</strong> &nbsp;·&nbsp; <span id="date">Loading date…</span></div>
-<section class="counters">
-  <article class="counter" style="--accent:#55e4ed">
-    <div class="label"><span class="emoji">🌎</span><span>World Population</span></div>
-    <div class="number" id="worldPop">8,200,000,000</div>
-    <div class="caption"><span class="pulse"></span>Estimated total population</div>
-  </article>
-  <article class="counter" style="--accent:#ff9933">
-    <div class="label"><span class="emoji">🇮🇳</span><span>India Population</span></div>
-    <div class="number" id="indiaPop">1,456,200,000</div>
-    <div class="caption"><span class="pulse"></span>Estimated total population</div>
-  </article>
-  <article class="counter" style="--accent:#6fe0a0">
-    <div class="label"><span class="emoji">👶</span><span>India Births Today</span></div>
-    <div class="number" id="indiaBirths">0</div>
-    <div class="caption"><span class="pulse"></span>Estimated since midnight IST</div>
-  </article>
-  <article class="counter" style="--accent:#ff8d9a">
-    <div class="label"><span class="emoji">🕊️</span><span>India Deaths Today</span></div>
-    <div class="number" id="indiaDeaths">0</div>
-    <div class="caption"><span class="pulse"></span>Estimated since midnight IST</div>
-  </article>
-</section>
-<section class="lower">
-  <div class="mini-title">A LIVE-STYLE VISUAL FOR YOUR SCREEN</div>
-  <p>Designed in a vertical 9:16-friendly layout for phone screens, Shorts and YouTube live-stream scenes.</p>
-</section>
-<footer class="bottom">
-  <span>Estimates · not official real-time counts</span>
-  <span><a href="https://www.earthlivedata.com/earth?utm_source=chatgpt.com" target="_blank" rel="noopener">EarthLiveData</a> · <a href="https://indialiv.com/sections/india-facts.html" target="_blank" rel="noopener">IndiaLiv</a></span>
-</footer>
+<footer><span>EARTHPULSE</span><span>✦</span><span>WORLD · INDIA · LIVE</span></footer>
 </main>
 <script>
 (() => {
-  'use strict';
   const $ = id => document.getElementById(id);
   const fmt = n => Math.floor(n).toLocaleString('en-IN');
-  // Illustrative starting values and approximate annual-rate conversions, not official live counts.
-  const worldBase = 8_200_000_000;
-  const indiaBase = 1_456_200_000;
-  const worldNetPerSecond = 2.2;
-  const indiaNetPerSecond = 0.5;
-  const indiaBirthsPerSecond = 0.85;
-  const indiaDeathsPerSecond = 0.30;
-  const pageStarted = Date.now();
+  const worldBase = 8_200_000_000, indiaBase = 1_456_200_000;
+  const worldRate = 2.2, indiaRate = 0.5, birthsRate = 0.85, deathsRate = 0.30;
+  const started = Date.now();
+  // Stylized vector continents; the repeating map layer moves across the globe to create rotation.
+  const land = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 180"><g fill="#5bdfa0" stroke="#279b83" stroke-width="1.6" stroke-linejoin="round"><path d="M16 30 37 16 58 20 75 32 68 47 51 50 43 66 27 59 16 45Z"/><path d="M66 64 91 60 105 76 97 94 86 117 77 143 64 123 59 95Z"/><path d="M105 24 133 16 157 25 168 42 151 53 134 45 120 57 108 44Z"/><path d="M147 67 174 55 202 67 214 88 199 111 190 139 173 153 159 126 154 101Z"/><path d="M187 20 215 12 238 21 249 36 233 47 214 41 203 54 190 43Z"/><path d="M237 67 263 55 289 65 309 83 298 101 276 96 263 114 247 96Z"/><path d="M301 24 327 20 345 34 337 48 315 47Z"/></g></svg>`;
+  document.querySelector('.continents').style.backgroundImage = `url("data:image/svg+xml,${encodeURIComponent(land)}")`;
   function midnightIST(now) {
-    const parts = new Intl.DateTimeFormat('en-CA', {
-      timeZone:'Asia/Kolkata',year:'numeric',month:'2-digit',day:'2-digit'
-    }).formatToParts(now);
-    const get = t => parts.find(p=>p.type===t).value;
-    return Date.parse(`${get('year')}-${get('month')}-${get('day')}T00:00:00+05:30`);
+    const p = new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Kolkata',year:'numeric',month:'2-digit',day:'2-digit'}).formatToParts(now);
+    const g = t => p.find(x=>x.type===t).value;
+    return Date.parse(`${g('year')}-${g('month')}-${g('day')}T00:00:00+05:30`);
   }
-  function update() {
-    const now = new Date();
-    $('clock').textContent = new Intl.DateTimeFormat('en-IN', {
-      timeZone:'Asia/Kolkata',hour:'2-digit',minute:'2-digit',second:'2-digit',hour12:true
-    }).format(now) + ' IST';
-    $('date').textContent = new Intl.DateTimeFormat('en-IN', {
-      timeZone:'Asia/Kolkata',day:'numeric',month:'short',year:'numeric'
-    }).format(now);
-    const elapsed = (Date.now()-pageStarted)/1000;
-    const daySeconds = Math.max(0,(Date.now()-midnightIST(now))/1000);
-    $('worldPop').textContent = fmt(worldBase+elapsed*worldNetPerSecond);
-    $('indiaPop').textContent = fmt(indiaBase+elapsed*indiaNetPerSecond);
-    $('indiaBirths').textContent = fmt(daySeconds*indiaBirthsPerSecond);
-    $('indiaDeaths').textContent = fmt(daySeconds*indiaDeathsPerSecond);
+  function tick() {
+    const now = new Date(), elapsed = (Date.now()-started)/1000, day = Math.max(0,(Date.now()-midnightIST(now))/1000);
+    $('clock').textContent = new Intl.DateTimeFormat('en-IN',{timeZone:'Asia/Kolkata',hour:'2-digit',minute:'2-digit',second:'2-digit',hour12:true}).format(now)+' IST';
+    $('date').textContent = new Intl.DateTimeFormat('en-IN',{timeZone:'Asia/Kolkata',day:'numeric',month:'short',year:'numeric'}).format(now);
+    $('worldPop').textContent=fmt(worldBase+elapsed*worldRate);
+    $('indiaPop').textContent=fmt(indiaBase+elapsed*indiaRate);
+    $('indiaBirths').textContent=fmt(day*birthsRate);
+    $('indiaDeaths').textContent=fmt(day*deathsRate);
   }
-  update();
-  setInterval(update,1000);
+  tick(); setInterval(tick,1000);
 })();
 </script>
 </body>
