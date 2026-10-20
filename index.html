@@ -1,0 +1,189 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>India World Live Population</title>
+
+<style>
+*{box-sizing:border-box}
+html,body{
+ margin:0;width:100%;height:100%;
+ background:#020711;color:#fff;
+ font-family:Arial,sans-serif;
+}
+body{display:grid;place-items:center;overflow:hidden}
+.screen{
+ width:min(100vw,56.25vh);
+ height:min(100vh,177.7778vw);
+ aspect-ratio:9/16;
+ padding:4%;
+ display:flex;flex-direction:column;gap:1.5%;
+ overflow:hidden;
+ background:radial-gradient(ellipse at top,#17456b,#071426 55%,#020711);
+ border:1px solid #235476;
+}
+.top{
+ display:flex;justify-content:space-between;
+ color:#56e8ff;font-size:clamp(9px,1.5vh,16px);
+ font-weight:bold;letter-spacing:1px;
+}
+.live{color:#ff5555}
+h1{text-align:center;font-size:clamp(23px,4vh,43px);margin:3% 0 0}
+h1 span{display:block;color:#ffbd55;font-size:.5em;margin-top:8px}
+.globe{
+ height:24%;display:grid;place-items:center;
+ position:relative;flex-shrink:0;
+}
+.earth{
+ font-size:clamp(95px,18vh,190px);
+ filter:drop-shadow(0 0 20px #28cfff);
+ animation:float 4s ease-in-out infinite;
+}
+.flag{
+ position:absolute;right:8%;bottom:10%;
+ width:25%;aspect-ratio:3/2;
+ display:flex;flex-direction:column;
+ border:1px solid #ffffff88;box-shadow:0 0 15px #000;
+}
+.saffron,.white,.green{height:33.333%}
+.saffron{background:#ff9933}
+.white{background:white;display:grid;place-items:center}
+.green{background:#138808}
+.chakra{
+ width:17px;height:17px;border:2px solid #000080;
+ border-radius:50%;position:relative;
+}
+.chakra:before{
+ content:"";position:absolute;width:100%;height:1px;
+ background:#000080;top:50%;left:0;
+}
+.chakra:after{
+ content:"";position:absolute;height:100%;width:1px;
+ background:#000080;left:50%;top:0;
+}
+.panel{
+ padding:4%;border:1px solid #23618a;border-radius:12px;
+ background:linear-gradient(120deg,#102b45,#071526);
+ box-shadow:0 4px 15px #0007;
+}
+.label{
+ color:#b9e0f5;font-weight:bold;
+ font-size:clamp(9px,1.5vh,16px);
+ letter-spacing:.5px;
+}
+.value{
+ font-size:clamp(20px,3.4vh,36px);
+ font-weight:900;margin-top:7px;
+ overflow-wrap:anywhere;
+ font-variant-numeric:tabular-nums;
+ color:#fff;text-shadow:0 0 12px #42d9ff55;
+}
+.sub{font-size:clamp(8px,1.2vh,12px);color:#9db3ca;margin-top:4px}
+.pair{display:grid;grid-template-columns:1fr 1fr;gap:3%}
+.pair .label{font-size:clamp(8px,1.3vh,13px)}
+.pair .value{font-size:clamp(17px,2.8vh,29px)}
+.footer{
+ margin-top:auto;text-align:center;color:#56e8ff;
+ font-size:clamp(9px,1.3vh,13px);
+ font-weight:bold;letter-spacing:1px;
+}
+@keyframes float{
+ 0%,100%{transform:translateY(0)}
+ 50%{transform:translateY(-8px)}
+}
+</style>
+</head>
+
+<body>
+<main class="screen">
+
+ <div class="top">
+  <span>GLOBAL DEMOGRAPHICS</span>
+  <span class="live">● LIVE</span>
+ </div>
+
+ <h1>POPULATION
+  <span>WORLD • INDIA</span>
+ </h1>
+
+ <div class="globe">
+  <div class="earth">🌎</div>
+  <div class="flag">
+   <div class="saffron"></div>
+   <div class="white"><div class="chakra"></div></div>
+   <div class="green"></div>
+  </div>
+ </div>
+
+ <section class="panel">
+  <div class="label">🌍 WORLD POPULATION</div>
+  <div class="value" id="world">8,300,000,000</div>
+  <div class="sub">WORLD POPULATION</div>
+ </section>
+
+ <section class="panel">
+  <div class="label">🇮🇳 INDIA POPULATION</div>
+  <div class="value" id="india">1,470,000,000</div>
+  <div class="sub">INDIA POPULATION</div>
+ </section>
+
+ <div class="pair">
+  <section class="panel">
+   <div class="label">👶 BIRTHS TODAY</div>
+   <div class="value" id="births">0</div>
+   <div class="sub">INDIA</div>
+  </section>
+
+  <section class="panel">
+   <div class="label">🕯️ DEATHS TODAY</div>
+   <div class="value" id="deaths">0</div>
+   <div class="sub">INDIA</div>
+  </section>
+ </div>
+
+ <div class="footer">LIVE POPULATION BOARD</div>
+</main>
+
+<script>
+const worldStart = 8300000000;
+const indiaStart = 1470000000;
+
+const worldGrowth = 70000000;
+const indiaGrowth = 12000000;
+const birthsYear = 23000000;
+const deathsYear = 10000000;
+
+const yearSeconds = 365.2425 * 86400;
+const fmt = n => Math.floor(n).toLocaleString("en-US");
+
+const pageStart = Date.now();
+
+function updateCounters(){
+ const elapsed = (Date.now() - pageStart) / 1000;
+ const now = new Date();
+
+ const todaySeconds =
+  now.getHours()*3600 +
+  now.getMinutes()*60 +
+  now.getSeconds();
+
+ document.getElementById("world").textContent =
+  fmt(worldStart + elapsed*worldGrowth/yearSeconds);
+
+ document.getElementById("india").textContent =
+  fmt(indiaStart + elapsed*indiaGrowth/yearSeconds);
+
+ document.getElementById("births").textContent =
+  fmt(todaySeconds*birthsYear/yearSeconds);
+
+ document.getElementById("deaths").textContent =
+  fmt(todaySeconds*deathsYear/yearSeconds);
+}
+
+updateCounters();
+setInterval(updateCounters,1000);
+</script>
+</body>
+</html>
