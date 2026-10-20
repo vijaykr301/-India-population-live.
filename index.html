@@ -4,87 +4,83 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#030712">
-<title>EarthPulse Live</title>
+<title>EarthPulse Live — World & India</title>
 <style>
-:root{--bg:#030712;--panel:#0b1830;--text:#f5f8ff;--muted:#91a7c5;--cyan:#66efff;--saffron:#ff9933;--green:#70f0a1}
-*{box-sizing:border-box}
-html,body{margin:0;min-height:100%;background:var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif}
-body{display:flex;justify-content:center}
-.app{width:100%;max-width:520px;min-height:100dvh;overflow:hidden;position:relative;padding:16px 15px 22px;background:radial-gradient(ellipse at 50% 27%,#0e3154 0%,#07152a 34%,#030712 72%);isolation:isolate}
-.stars{position:absolute;inset:0;z-index:-1;pointer-events:none;opacity:.55;background-image:radial-gradient(1px 1px at 12% 12%,#fff 90%,transparent),radial-gradient(1px 1px at 79% 8%,#a8f5ff 90%,transparent),radial-gradient(1px 1px at 87% 26%,#fff 90%,transparent),radial-gradient(1px 1px at 7% 41%,#fff 90%,transparent),radial-gradient(1px 1px at 92% 52%,#b9f6ff 90%,transparent),radial-gradient(1px 1px at 24% 73%,#fff 90%,transparent),radial-gradient(1px 1px at 66% 67%,#fff 90%,transparent)}
-header{display:flex;justify-content:space-between;align-items:center;gap:8px;position:relative;z-index:3}.brand{display:flex;align-items:center;gap:9px;font-size:14px;font-weight:900;letter-spacing:.08em}.brand-mark{width:33px;height:33px;border-radius:11px;background:linear-gradient(135deg,#62f0f1,#4a7fff);display:grid;place-items:center;color:#041021;font-size:22px;box-shadow:0 0 24px #4ddaf544}.live{display:flex;align-items:center;gap:6px;border:1px solid #74374b;background:#301522;color:#ffb5c1;padding:5px 9px;border-radius:30px;font-size:10px;font-weight:900;letter-spacing:.12em}.live i{width:7px;height:7px;border-radius:50%;background:#ff4966;box-shadow:0 0 10px #ff4966;animation:blink 1s steps(2,start) infinite}
-@keyframes blink{to{opacity:.25}}
+:root{--bg:#030712;--text:#f5f8ff;--muted:#91a7c5;--cyan:#66efff}
+*{box-sizing:border-box}html,body{margin:0;min-height:100%;background:var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif}
+body{display:flex;justify-content:center}.app{width:100%;max-width:520px;min-height:100dvh;overflow:hidden;position:relative;padding:16px 15px 22px;background:radial-gradient(ellipse at 50% 27%,#0e3154 0%,#07152a 34%,#030712 72%);isolation:isolate}
+.stars{position:absolute;inset:0;z-index:-1;pointer-events:none;opacity:.55;background-image:radial-gradient(1px 1px at 12% 12%,#fff 90%,transparent),radial-gradient(1px 1px at 79% 8%,#a8f5ff 90%,transparent),radial-gradient(1px 1px at 87% 26%,#fff 90%,transparent),radial-gradient(1px 1px at 7% 41%,#fff 90%,transparent),radial-gradient(1px 1px at 92% 52%,#b9f6ff 90%,transparent),radial-gradient(1px 1px at 24% 73%,#fff 90%,transparent)}
+header{display:flex;justify-content:space-between;align-items:center;gap:8px;position:relative;z-index:3}.brand{display:flex;align-items:center;gap:9px;font-size:14px;font-weight:900;letter-spacing:.08em}.brand-mark{width:33px;height:33px;border-radius:11px;background:linear-gradient(135deg,#62f0f1,#4a7fff);display:grid;place-items:center;color:#041021;font-size:22px;box-shadow:0 0 24px #4ddaf544}.live{display:flex;align-items:center;gap:6px;border:1px solid #74374b;background:#301522;color:#ffb5c1;padding:5px 9px;border-radius:30px;font-size:10px;font-weight:900;letter-spacing:.12em}.live i{width:7px;height:7px;border-radius:50%;background:#ff4966;box-shadow:0 0 10px #ff4966;animation:blink 1s steps(2,start) infinite}@keyframes blink{to{opacity:.25}}
 .hero{text-align:center;margin-top:19px}.eyebrow{font-size:10px;letter-spacing:.2em;color:#83f5f4;font-weight:900}.hero h1{font-size:clamp(25px,7vw,34px);line-height:1.05;letter-spacing:-.045em;margin:9px 0 6px}.hero p{margin:0;color:#a6bdd6;font-size:11px}
-.universe{height:clamp(270px,76vw,355px);max-height:355px;position:relative;margin:0 auto;display:flex;align-items:center;justify-content:center;perspective:900px}
-.halo{position:absolute;width:min(83vw,340px);height:min(83vw,340px);max-width:340px;max-height:340px;border-radius:50%;border:1px solid #58dff333;box-shadow:0 0 60px #1aa9ff0c,inset 0 0 50px #31c5ff0b;transform:rotateX(67deg) rotateZ(-15deg);animation:orbit 24s linear infinite}
-.halo:before,.halo:after{content:"";position:absolute;inset:14px 48px;border:1px solid #59dce62b;border-radius:50%;transform:rotate(46deg)}.halo:after{inset:39px 16px;transform:rotate(-43deg)}
-@keyframes orbit{to{transform:rotateX(67deg) rotateZ(345deg)}}
-.earth-shell{position:relative;width:clamp(190px,53vw,250px);height:clamp(190px,53vw,250px);max-width:250px;max-height:250px;border-radius:50%;overflow:hidden;background:radial-gradient(circle at 30% 25%,#9ffaff 0%,#45c6ff 9%,#1474c7 28%,#074078 57%,#03142f 78%,#010819 100%);box-shadow:inset -24px -18px 38px #000b,inset 11px 8px 23px #b7faff7d,0 0 20px #42d9ff66,0 0 55px #168bff44,0 0 100px #168bff1c;transform-style:preserve-3d;animation:earthFloat 6s ease-in-out infinite}
-.earth-shell:before{content:"";position:absolute;inset:0;border-radius:50%;z-index:2;pointer-events:none;background:linear-gradient(105deg,transparent 20%,#b6f7ff14 36%,transparent 48%,#000b 100%);box-shadow:inset 7px 0 13px #b9f7ff66,inset -17px -4px 28px #000c}
-.earth-shell:after{content:"";position:absolute;inset:-3px;border-radius:50%;border:2px solid #7deaff33;box-shadow:0 0 17px #4bdfff44}
-.continents{position:absolute;inset:0;width:200%;height:100%;background-repeat:repeat-x;background-size:50% 100%;animation:spinMap 22s linear infinite;filter:drop-shadow(0 0 2px #4de5a8);opacity:.98}
-@keyframes spinMap{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-@keyframes earthFloat{0%,100%{translate:0 0}50%{translate:0 -7px}}
-.atmosphere{position:absolute;width:clamp(205px,57vw,266px);height:clamp(205px,57vw,266px);max-width:266px;max-height:266px;border-radius:50%;border:1px solid #8cf5ff66;box-shadow:0 0 18px #48dfff2c,inset 0 0 18px #48dfff22;pointer-events:none}
-.flag-holder{position:absolute;right:0;bottom:10px;width:115px;height:85px;filter:drop-shadow(0 10px 9px #0008);animation:flagHover 4s ease-in-out infinite;transform-origin:left center;z-index:4}
-.pole{position:absolute;left:5px;top:0;height:83px;width:3px;border-radius:3px;background:linear-gradient(90deg,#e9efff,#68788e)}
-.flag{position:absolute;left:8px;top:6px;width:102px;height:63px;transform-origin:left center;animation:flagWave 1.35s ease-in-out infinite alternate;clip-path:polygon(0 0,100% 5%,100% 95%,0 100%);background:linear-gradient(to bottom,#ff9933 0 33.33%,#fff 33.33% 66.66%,#138808 66.66% 100%);box-shadow:0 3px 9px #0004}
-.chakra{position:absolute;left:50%;top:50%;width:16px;height:16px;border:1.5px solid #1b4c9b;border-radius:50%;transform:translate(-50%,-50%);background:repeating-conic-gradient(#1b4c9b 0deg 4deg,transparent 4deg 15deg)}
-@keyframes flagWave{0%{transform:perspective(160px) rotateY(-20deg) skewY(2deg);filter:brightness(.92)}100%{transform:perspective(160px) rotateY(18deg) skewY(-2deg);filter:brightness(1.08)}}
-@keyframes flagHover{0%,100%{translate:0 0}50%{translate:0 -5px}}
-.clock{text-align:center;margin-top:-1px;font-size:10px;color:#8ea8c6}.clock strong{color:#f4f8ff;font-size:12px;font-variant-numeric:tabular-nums}
-.cards{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:18px}.card{min-width:0;position:relative;overflow:hidden;padding:14px 12px 13px;border:1px solid #34516e;border-radius:17px;background:linear-gradient(145deg,#132a44f5,#0a1629f5);box-shadow:0 9px 26px #0003}.card:before{content:"";position:absolute;top:0;left:13px;right:13px;height:2px;border-radius:0 0 5px 5px;background:var(--accent);box-shadow:0 0 12px var(--accent)}
-.label{display:flex;align-items:center;gap:6px;min-height:29px;font-size:11px;font-weight:800;color:#dceafa}.label span:first-child{font-size:19px}.value{font-size:clamp(19px,5.2vw,27px);line-height:1.15;font-weight:900;letter-spacing:-.045em;margin:13px 0 8px;overflow-wrap:anywhere;font-variant-numeric:tabular-nums}.sub{font-size:9px;color:#9bb0c8;line-height:1.35}.pulse{display:inline-block;width:5px;height:5px;border-radius:50%;background:#6fe6a1;margin-right:4px}
-footer{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-top:18px;color:#7790ad;font-size:9px;letter-spacing:.03em}
-@media(min-width:430px){.app{padding-left:20px;padding-right:20px}.cards{gap:12px}.card{padding:16px 15px}}
-@media(max-width:370px){.app{padding-left:11px;padding-right:11px}.cards{gap:8px}.card{padding:12px 10px}.value{font-size:19px}.flag-holder{right:-4px;transform:scale(.88);transform-origin:right bottom}}
-@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important}}
+.universe{height:clamp(270px,76vw,355px);max-height:355px;position:relative;margin:0 auto;display:flex;align-items:center;justify-content:center;perspective:900px}.halo{position:absolute;width:min(83vw,340px);height:min(83vw,340px);max-width:340px;max-height:340px;border-radius:50%;border:1px solid #58dff333;box-shadow:0 0 60px #1aa9ff0c,inset 0 0 50px #31c5ff0b;transform:rotateX(67deg) rotateZ(-15deg);animation:orbit 24s linear infinite}.halo:before,.halo:after{content:"";position:absolute;inset:14px 48px;border:1px solid #59dce62b;border-radius:50%;transform:rotate(46deg)}.halo:after{inset:39px 16px;transform:rotate(-43deg)}@keyframes orbit{to{transform:rotateX(67deg) rotateZ(345deg)}}
+.earth-shell{position:relative;width:clamp(190px,53vw,250px);height:clamp(190px,53vw,250px);max-width:250px;max-height:250px;border-radius:50%;overflow:hidden;background:radial-gradient(ellipse at 28% 22%,#d7ffff 0%,#71e5ff 4%,#269fe9 17%,#1264b3 39%,#07386f 65%,#02152f 84%,#010819 100%);box-shadow:inset -30px -20px 42px #000d,inset 10px 8px 20px #d5ffff9c,0 0 24px #42d9ff88,0 0 65px #168bff55,0 0 120px #168bff2c;animation:earthFloat 6s ease-in-out infinite}.earth-shell:before{content:"";position:absolute;inset:0;border-radius:50%;z-index:2;pointer-events:none;background:linear-gradient(105deg,transparent 20%,#b6f7ff14 36%,transparent 48%,#000b 100%);box-shadow:inset 7px 0 13px #b9f7ff66,inset -17px -4px 28px #000c}.earth-shell:after{content:"";position:absolute;inset:-3px;border-radius:50%;border:2px solid #7deaff33;box-shadow:0 0 17px #4bdfff44}.continents{position:absolute;inset:0;width:200%;height:100%;background-repeat:repeat-x;background-size:50% 100%;animation:spinMap 30s linear infinite;filter:drop-shadow(0 0 3px #57ffc0);opacity:.92;mix-blend-mode:screen}.clouds{position:absolute;inset:-3%;width:206%;height:106%;border-radius:50%;background:repeating-linear-gradient(168deg,transparent 0 17px,#e7ffff10 18px,#ffffff28 20px,transparent 26px 43px);filter:blur(3px);opacity:.55;animation:spinMap 42s linear infinite;pointer-events:none}.earth-shell .continents{mask-image:radial-gradient(ellipse at 45% 48%,#000 58%,transparent 75%)}@keyframes spinMap{from{transform:translateX(0)}to{transform:translateX(-50%)}}@keyframes earthFloat{0%,100%{translate:0 0}50%{translate:0 -7px}}.atmosphere{position:absolute;width:clamp(205px,57vw,266px);height:clamp(205px,57vw,266px);max-width:266px;max-height:266px;border-radius:50%;border:1px solid #8cf5ff66;box-shadow:0 0 18px #48dfff2c,inset 0 0 18px #48dfff22;pointer-events:none}
+.flag-holder{position:absolute;right:0;bottom:10px;width:115px;height:85px;filter:drop-shadow(0 10px 9px #0008);animation:flagHover 4s ease-in-out infinite;transform-origin:left center;z-index:4}.pole{position:absolute;left:5px;top:0;height:83px;width:3px;border-radius:3px;background:linear-gradient(90deg,#e9efff,#68788e)}.flag{position:absolute;left:8px;top:6px;width:102px;height:63px;transform-origin:left center;animation:flagWave 1.35s ease-in-out infinite alternate;clip-path:polygon(0 0,100% 5%,100% 95%,0 100%);background:linear-gradient(to bottom,#ff9933 0 33.33%,#fff 33.33% 66.66%,#138808 66.66% 100%)}.chakra{position:absolute;left:50%;top:50%;width:16px;height:16px;border:1.5px solid #1b4c9b;border-radius:50%;transform:translate(-50%,-50%);background:repeating-conic-gradient(#1b4c9b 0deg 4deg,transparent 4deg 15deg)}@keyframes flagWave{0%{transform:perspective(160px) rotateY(-20deg) skewY(2deg);filter:brightness(.92)}100%{transform:perspective(160px) rotateY(18deg) skewY(-2deg);filter:brightness(1.08)}}@keyframes flagHover{0%,100%{translate:0 0}50%{translate:0 -5px}}
+.clock{text-align:center;margin-top:-1px;font-size:10px;color:#8ea8c6}.clock strong{color:#f4f8ff;font-size:12px;font-variant-numeric:tabular-nums}.cards{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:18px}.card{min-width:0;position:relative;overflow:hidden;padding:14px 12px 13px;border:1px solid #34516e;border-radius:17px;background:linear-gradient(145deg,#132a44f5,#0a1629f5);box-shadow:0 9px 26px #0003}.card:before{content:"";position:absolute;top:0;left:13px;right:13px;height:2px;border-radius:0 0 5px 5px;background:var(--accent);box-shadow:0 0 12px var(--accent)}.label{display:flex;align-items:center;gap:6px;min-height:29px;font-size:11px;font-weight:800;color:#dceafa}.label span:first-child{font-size:19px}.value{font-size:clamp(19px,5.2vw,27px);line-height:1.15;font-weight:900;letter-spacing:-.045em;margin:13px 0 8px;overflow-wrap:anywhere;font-variant-numeric:tabular-nums}.sub{font-size:9px;color:#9bb0c8;line-height:1.35}.pulse{display:inline-block;width:5px;height:5px;border-radius:50%;background:#6fe6a1;margin-right:4px}
+.sourcebar{display:flex;justify-content:center;align-items:center;gap:6px;flex-wrap:wrap;margin-top:17px;font-size:9px;color:#85a5c7}.sourcebar a{color:#8cecf4;text-decoration:none}.sourcebar .status{color:#76f0a0}
+@media(min-width:430px){.app{padding-left:20px;padding-right:20px}.cards{gap:12px}.card{padding:16px 15px}}@media(max-width:370px){.app{padding-left:11px;padding-right:11px}.cards{gap:8px}.card{padding:12px 10px}.value{font-size:19px}.flag-holder{right:-4px;transform:scale(.88);transform-origin:right bottom}}@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important}}
 </style>
 </head>
-<body>
-<main class="app">
-<div class="stars"></div>
-<header><div class="brand"><div class="brand-mark">◎</div><span>EARTHPULSE</span></div><div class="live"><i></i> LIVE STYLE</div></header>
-<section class="hero"><div class="eyebrow">🌎 ONE PLANET &nbsp;·&nbsp; 🇮🇳 ONE NATION</div><h1>WORLD & INDIA<br>LIVE COUNTERS</h1><p>Our changing world, updated every second</p></section>
-<section class="universe" aria-label="Rotating 3D-style Earth and waving Indian flag">
-  <div class="halo"></div><div class="earth-shell"><div class="continents" aria-hidden="true"></div></div><div class="atmosphere"></div>
-  <div class="flag-holder" role="img" aria-label="Waving Indian national flag"><div class="pole"></div><div class="flag"><div class="chakra"></div></div></div>
-</section>
+<body><main class="app"><div class="stars"></div>
+<header><div class="brand"><div class="brand-mark">◎</div><span>EARTHPULSE</span></div><div class="live"><i></i> LIVE</div></header>
+<section class="hero"><div class="eyebrow">🌎 ONE PLANET &nbsp;·&nbsp; 🇮🇳 ONE NATION</div><h1>WORLD & INDIA<br>LIVE COUNTERS</h1><p>Live-style counters · refreshed from trusted data</p></section>
+<section class="universe" aria-label="Rotating 3D-style Earth and waving Indian flag"><div class="halo"></div><div class="earth-shell"><div class="continents" aria-hidden="true"></div><div class="clouds" aria-hidden="true"></div></div><div class="atmosphere"></div><div class="flag-holder" role="img" aria-label="Waving Indian national flag"><div class="pole"></div><div class="flag"><div class="chakra"></div></div></div></section>
 <div class="clock"><strong id="clock">--:--:-- IST</strong> &nbsp;·&nbsp; <span id="date">Loading…</span></div>
 <section class="cards">
-  <article class="card" style="--accent:#5de4e8"><div class="label"><span>🌎</span><span>World Population</span></div><div class="value" id="worldPop">8,200,000,000</div><div class="sub"><i class="pulse"></i>Estimated total population</div></article>
-  <article class="card" style="--accent:#ff9933"><div class="label"><span>🇮🇳</span><span>India Population</span></div><div class="value" id="indiaPop">1,456,200,000</div><div class="sub"><i class="pulse"></i>Estimated total population</div></article>
-  <article class="card" style="--accent:#70f0a1"><div class="label"><span>👶</span><span>India Births Today</span></div><div class="value" id="indiaBirths">0</div><div class="sub"><i class="pulse"></i>Since midnight IST</div></article>
-  <article class="card" style="--accent:#ff8e9b"><div class="label"><span>🕊️</span><span>India Deaths Today</span></div><div class="value" id="indiaDeaths">0</div><div class="sub"><i class="pulse"></i>Since midnight IST</div></article>
+<article class="card" style="--accent:#5de4e8"><div class="label"><span>🌎</span><span>World Population</span></div><div class="value" id="worldPop">Loading…</div><div class="sub"><i class="pulse"></i><span id="worldSource">Fetching World Bank data</span></div></article>
+<article class="card" style="--accent:#ff9933"><div class="label"><span>🇮🇳</span><span>India Population</span></div><div class="value" id="indiaPop">Loading…</div><div class="sub"><i class="pulse"></i><span id="indiaSource">Fetching World Bank data</span></div></article>
+<article class="card" style="--accent:#70f0a1"><div class="label"><span>👶</span><span>India Births Today</span></div><div class="value" id="indiaBirths">—</div><div class="sub"><i class="pulse"></i>Since midnight IST</div></article>
+<article class="card" style="--accent:#ff8e9b"><div class="label"><span>🕊️</span><span>India Deaths Today</span></div><div class="value" id="indiaDeaths">—</div><div class="sub"><i class="pulse"></i>Since midnight IST</div></article>
 </section>
-<footer><span>EARTHPULSE</span><span>✦</span><span>WORLD · INDIA · LIVE</span></footer>
+<div class="sourcebar"><span class="status" id="dataStatus">● Connecting to verified data</span><span>·</span><a href="https://datahelpdesk.worldbank.org/knowledgebase/articles/889392-about-the-indicators-api" target="_blank" rel="noopener">World Bank API</a><span>·</span><a href="https://indialiv.com/live/india-population-live.html" target="_blank" rel="noopener">IndiaLiv methodology</a></div>
 </main>
 <script>
 (() => {
-  const $ = id => document.getElementById(id);
-  const fmt = n => Math.floor(n).toLocaleString('en-IN');
-  const worldBase = 8_200_000_000, indiaBase = 1_456_200_000;
-  const worldRate = 2.2, indiaRate = 0.5, birthsRate = 0.85, deathsRate = 0.30;
-  const started = Date.now();
-  // Stylized vector continents; the repeating map layer moves across the globe to create rotation.
-  const land = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 180"><g fill="#5bdfa0" stroke="#279b83" stroke-width="1.6" stroke-linejoin="round"><path d="M16 30 37 16 58 20 75 32 68 47 51 50 43 66 27 59 16 45Z"/><path d="M66 64 91 60 105 76 97 94 86 117 77 143 64 123 59 95Z"/><path d="M105 24 133 16 157 25 168 42 151 53 134 45 120 57 108 44Z"/><path d="M147 67 174 55 202 67 214 88 199 111 190 139 173 153 159 126 154 101Z"/><path d="M187 20 215 12 238 21 249 36 233 47 214 41 203 54 190 43Z"/><path d="M237 67 263 55 289 65 309 83 298 101 276 96 263 114 247 96Z"/><path d="M301 24 327 20 345 34 337 48 315 47Z"/></g></svg>`;
-  document.querySelector('.continents').style.backgroundImage = `url("data:image/svg+xml,${encodeURIComponent(land)}")`;
-  function midnightIST(now) {
-    const p = new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Kolkata',year:'numeric',month:'2-digit',day:'2-digit'}).formatToParts(now);
-    const g = t => p.find(x=>x.type===t).value;
-    return Date.parse(`${g('year')}-${g('month')}-${g('day')}T00:00:00+05:30`);
-  }
-  function tick() {
-    const now = new Date(), elapsed = (Date.now()-started)/1000, day = Math.max(0,(Date.now()-midnightIST(now))/1000);
-    $('clock').textContent = new Intl.DateTimeFormat('en-IN',{timeZone:'Asia/Kolkata',hour:'2-digit',minute:'2-digit',second:'2-digit',hour12:true}).format(now)+' IST';
-    $('date').textContent = new Intl.DateTimeFormat('en-IN',{timeZone:'Asia/Kolkata',day:'numeric',month:'short',year:'numeric'}).format(now);
-    $('worldPop').textContent=fmt(worldBase+elapsed*worldRate);
-    $('indiaPop').textContent=fmt(indiaBase+elapsed*indiaRate);
-    $('indiaBirths').textContent=fmt(day*birthsRate);
-    $('indiaDeaths').textContent=fmt(day*deathsRate);
-  }
-  tick(); setInterval(tick,1000);
+'use strict';
+const $ = id => document.getElementById(id);
+const fmt = n => Math.floor(n).toLocaleString('en-IN');
+const startedAt = Date.now();
+const rates = {worldNetPerSecond:2.2, indiaNetPerSecond:0.52, birthsPerSecond:0.85, deathsPerSecond:0.32};
+let worldBase = null, indiaBase = null, worldYear = null, indiaYear = null;
+let worldBaselineAt = null, indiaBaselineAt = null;
+const land = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 180"><g fill="#66e6a4" stroke="#2dbd91" stroke-width="1.4" stroke-linejoin="round"><path d="M20 40 34 25 57 19 76 25 86 37 77 49 63 52 57 65 45 68 35 59 23 58Z"/><path d="M64 74 78 68 91 78 95 95 87 111 82 133 72 151 65 132 62 111 56 94Z"/><path d="M105 34 120 23 142 20 160 28 170 42 161 52 147 49 137 61 124 54 113 56Z"/><path d="M151 66 167 57 187 62 199 76 193 92 184 105 179 129 167 148 158 132 155 112 147 92Z"/><path d="M173 26 192 14 218 17 237 27 254 29 267 41 258 52 241 51 230 63 213 59 201 47 185 46Z"/><path d="M222 67 240 60 259 64 272 76 286 79 297 93 288 105 270 100 260 112 249 104 237 91 225 88Z"/><path d="M286 28 306 20 327 25 342 36 332 47 315 45 303 54 291 45Z"/><path d="M304 115 318 110 331 119 326 131 312 132Z"/></g></svg>`;
+document.querySelector('.continents').style.backgroundImage = `url("data:image/svg+xml,${encodeURIComponent(land)}")`;
+function midnightIST(now){const p=new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Kolkata',year:'numeric',month:'2-digit',day:'2-digit'}).formatToParts(now);const g=t=>p.find(x=>x.type===t).value;return Date.parse(`${g('year')}-${g('month')}-${g('day')}T00:00:00+05:30`);}
+async function fetchLatestPopulation(countryCode){
+ const url=`https://api.worldbank.org/v2/country/${countryCode}/indicator/SP.POP.TOTL?format=json&per_page=100`;
+ const response=await fetch(url,{cache:'no-store'});
+ if(!response.ok) throw new Error('World Bank API HTTP '+response.status);
+ const data=await response.json();
+ if(!Array.isArray(data)||!Array.isArray(data[1])) throw new Error('Unexpected World Bank API response');
+ const row=data[1].find(x=>x.value!==null);
+ if(!row) throw new Error('No population value returned');
+ return {value:Number(row.value),year:Number(row.date)};
+}
+async function loadVerifiedBaselines(){
+ $('dataStatus').textContent='● Fetching latest World Bank population data';
+ try{
+   const [world,india]=await Promise.all([fetchLatestPopulation('WLD'),fetchLatestPopulation('IND')]);
+   worldBase=world.value;indiaBase=india.value;worldYear=world.year;indiaYear=india.year;
+   worldBaselineAt=Date.now();indiaBaselineAt=Date.now();
+   $('worldSource').textContent=`World Bank baseline · ${world.year}`;
+   $('indiaSource').textContent=`World Bank baseline · ${india.year}`;
+   $('dataStatus').textContent='● World Bank data connected';
+   tick();
+ }catch(error){
+   $('dataStatus').textContent='● Data connection failed — retrying';
+   $('worldSource').textContent='World Bank API unavailable';
+   $('indiaSource').textContent='World Bank API unavailable';
+   console.error(error);
+ }
+}
+function tick(){
+ const now=new Date(),elapsed=(Date.now()-startedAt)/1000,day=Math.max(0,(Date.now()-midnightIST(now))/1000);
+ $('clock').textContent=new Intl.DateTimeFormat('en-IN',{timeZone:'Asia/Kolkata',hour:'2-digit',minute:'2-digit',second:'2-digit',hour12:true}).format(now)+' IST';
+ $('date').textContent=new Intl.DateTimeFormat('en-IN',{timeZone:'Asia/Kolkata',day:'numeric',month:'short',year:'numeric'}).format(now);
+ if(worldBase!==null)$('worldPop').textContent=fmt(worldBase+Math.max(0,(Date.now()-worldBaselineAt)/1000)*rates.worldNetPerSecond);
+ if(indiaBase!==null)$('indiaPop').textContent=fmt(indiaBase+Math.max(0,(Date.now()-indiaBaselineAt)/1000)*rates.indiaNetPerSecond);
+ $('indiaBirths').textContent=fmt(day*rates.birthsPerSecond);
+ $('indiaDeaths').textContent=fmt(day*rates.deathsPerSecond);
+}
+tick();loadVerifiedBaselines();setInterval(tick,1000);setInterval(loadVerifiedBaselines,6*60*60*1000);
 })();
-</script>
-</body>
-</html>
+</script></body></html>
